@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html>
+
+ 
+
+  <head>
+	
+	<meta charset="utf-8">
+	<title>?!?</title>
+	<link rel="stylesheet" href="style.css">
+
+
+	<script src="https://kit.fontawesome.com/231bb1e68e.js" crossorigin="anonymous"></script>
+  </head>
+
+<body>
+	<div class="bloc" id="fondVideo"></div>
+	<div class="logo" id="gif"></div>
+	<h1>vie silencieuse</h1>
+	<div class="text">
+		<button class="bouton1" id="play2" onclick = "changeBackground2('phase.mov');">
+			<i class="fa-solid fa-play"></i>
+		</button>
+		<audio src="pluie d'oiseau.mp3" id="audio2"></audio>
+		
+		
+		<p>	La simple énumération des choses représentées sur la toile,</p>
+		<p>	puis de l’étude de la singulière manière du peintre, de son « faire »,</p>
+		<p>	se révèlent impuissants à expliquer la véritable beauté des oeuvres.</p>
+		<p>	C’est donc ce mouvement de l’écriture vers un inévitable silence de la peinture</p>
+		<p>	qu’il s’agissait de tracer, mouvement qui passe des objets au « technique »,</p>
+		<p>	et qui se perd, enfin, dans l’homme.</p>
+	</div>
+
+	<div class="playlist barre" id="musique-contenant">
+
+		<div class="centre" id="titre">champi...</div>
+
+
+
+			<div class="navigation">
+				<button class="action-btn" id="precedent">
+					<i class="btn-prev fa fa-step-backward" aria-hidden="true"></i>
+				</button>
+			  <div class="btn-switch">
+				<button class="action-btn" id="play">
+					<i class="btn-play fa fa-play" aria-hidden="true"></i>
+				</button>
+			  </div>
+			  <button class="action-btn" id="suivant">
+				<i class="btn-next fa fa-step-forward" aria-hidden="true"></i>
+			  </button>
+			</div>
+
+		
+		
+			
+		<ol>
+			<li class="info" id="un">
+				<div onclick = "changeBackground2('feu.mov');">
+					<div class="title">Alma</div>
+					<audio src="Musique/Alma.mp3" id="audio"></audio>
+				</div>
+			</li>
+				
+			<li class="info" id="deux">
+				<div onclick = "changeBackground2('feu.mov');">
+					<div class="title">Prayer</div>
+					<audio src="Musique/Prayer.mp3" id="audio"></audio>
+				</div>
+			</li>
+			<li class="info" id="trois">
+				<div onclick = "changeBackground2('feu.mov');">
+					<div class="title">Articulate</div>
+					<audio src="Musique/Articulate.mp3" id="audio"></audio>
+				</div>
+			</li>
+			<li class="info" id ="quatre">
+				<div onclick = "changeBackground2('mere.mp4');">
+					<div class="title">I</div>
+					<audio src="Musique/I.mp3" id="audio"></audio>
+				</div>
+			</li>
+			<li class="info" id="cinq">
+				<div onclick = "changeBackground2('mere.mp4');">
+					<div class="title">Lazarus</div>
+					<audio src="Musique/Lazarus.mp3" id="audio"></audio>
+				</div>
+			</li>
+			<li class="info" id="six">
+				<div onclick = "changeBackground2('mere.mp4');">
+					<div class="title">Romeo</div>
+					<audio src="Musique/Romeo.mp3" id="audio"></audio>
+				</div>
+			</li>
+			<li class="info" id="sept">
+				<div onclick = "changeBackground2('vire.mov');">
+					<div class="title">Glissent les feuilles</div>
+					<audio src="Musique/Glissent les feuilles.mp3" id="audio"></audio>
+				</div>
+			</li>
+			<li class="info" id="huit">
+				<div onclick = "changeBackground2('vire.mov');">
+					<div class="title">432Hz</div>
+					<audio src="Musique/432Hz.mp3" id="audio"></audio>
+				</div>
+			</li>
+			<li class="info" id="neuf">
+				<div onclick = "changeBackground2('vire.mov');">
+					<div class="title">Canyon Bird Life</div>
+					<audio src="Musique/Canyon Bird Life.mp3" id="audio"></audio>
+				</div>
+			</li>
+		</ol>
+	</div>	
+			
+					
+				  
+				  
+
+	
+	<script>
+	
+		const musiqueContenant=document.getElementById('musique-contenant');
+		
+		const btnPlay=document.getElementById('play');
+		const btnPrecedent=document.getElementById('precedent');
+		const btnSuivant=document.getElementById('suivant');
+
+		const btnPlay2=document.getElementById('play2');
+		
+		const audio=document.getElementById('audio');
+
+		
+
+		const titre=document.getElementById('titre');
+
+		const chansonsArr=["pluie d'oiseau",'Alma','Prayer','Articulate','I','Lazarus','Romeo','Glissent les feuilles','432Hz','Canyon Bird Life'];
+		const musiquex=["pluie d'oiseau"]
+		
+		const titre1=document.getElementById('un');
+		const titre2=document.getElementById('deux');
+		const titre3=document.getElementById('trois');
+		const titre4=document.getElementById('quatre');
+		const titre5=document.getElementById('cinq');
+		const titre6=document.getElementById('six');
+		const titre7=document.getElementById('sept');
+		const titre8=document.getElementById('huit');
+		const titre9=document.getElementById('neuf');
+		
+		let ordreChanson=0;
+		let nb=0;
+		
+		function telechargerChanson(chanson){
+			titre.innerText=chanson;
+			audio.src=`musique/${chanson}.mp3`;
+
+		}
+		
+		function telechargerChanson2(chanson){
+			titre.innerText=chanson;
+			audio.src=`${chanson}.mp3`;
+
+		}
+
+		telechargerChanson(chansonsArr[ordreChanson]);
+
+		
+		function playChanson(){
+			musiqueContenant.classList.add('play');
+			btnPlay.querySelector('i.fa').classList.remove('fa-play');
+			btnPlay.querySelector('i.fa').classList.add('fa-pause');
+			audio.play();
+			
+		}
+		
+		function pauseChanson(){
+			musiqueContenant.classList.remove('play');
+			audio.pause();
+			
+			btnPlay.querySelector('i.fa').classList.add('fa-play');
+			btnPlay.querySelector('i.fa').classList.remove('fa-pause');
+		}
+		
+
+		
+		function chansonPrecedente(){
+			ordreChanson--;
+			if(ordreChanson<0){
+				ordreChanson=0
+			}
+			telechargerChanson(chansonsArr[ordreChanson]);
+			playChanson();
+		}
+		
+		
+		
+		function chansonSuivante(){
+			ordreChanson++;
+			if(ordreChanson>chansonsArr.length-1){
+				ordreChanson=0
+			}
+			telechargerChanson(chansonsArr[ordreChanson]);
+			playChanson();
+		}
+		
+		
+		
+
+		
+		function cliqueMusique1(){
+			ordreChanson=1
+			
+			telechargerChanson(chansonsArr[ordreChanson]);
+
+			playChanson();
+		
+		}
+		function cliqueMusique2(){
+			ordreChanson=2
+			
+			telechargerChanson(chansonsArr[ordreChanson]);
+
+			playChanson();
+		
+		}
+		function cliqueMusique3(){
+			ordreChanson=3
+			
+			telechargerChanson(chansonsArr[ordreChanson]);
+
+			playChanson();
+		
+		}
+		function cliqueMusique4(){
+			ordreChanson=4
+			
+			telechargerChanson(chansonsArr[ordreChanson]);
+
+			playChanson();
+		
+		}
+		function cliqueMusique5(){
+			ordreChanson=5
+			
+			telechargerChanson(chansonsArr[ordreChanson]);
+
+			playChanson();
+		
+		}
+		function cliqueMusique6(){
+			ordreChanson=6
+			
+			telechargerChanson(chansonsArr[ordreChanson]);
+
+			playChanson();
+		
+		}
+		function cliqueMusique7(){
+			ordreChanson=7
+			
+			telechargerChanson(chansonsArr[ordreChanson]);
+
+			playChanson();
+		
+		}
+		function cliqueMusique8(){
+			ordreChanson=8
+			
+			telechargerChanson(chansonsArr[ordreChanson]);
+
+			playChanson();
+		
+		}
+		function cliqueMusique9(){
+			ordreChanson=9
+			
+			telechargerChanson(chansonsArr[ordreChanson]);
+
+			playChanson();
+		
+		}
+		
+		function cliqueMusiquex(){
+			ordreChanson=0
+			
+			telechargerChanson2(musiquex);
+			playChanson();
+		
+		}
+		
+
+		
+		btnPlay2.addEventListener('click',cliqueMusiquex);
+		
+		btnPlay.addEventListener('click',() => {
+			const enTrainDeJouer=musiqueContenant.classList.contains('play');
+			
+			if(enTrainDeJouer){
+				pauseChanson();
+			} else{
+				playChanson();
+				}
+		});
+		
+		titre1.addEventListener('click',cliqueMusique1);
+		titre2.addEventListener('click',cliqueMusique2);
+		titre3.addEventListener('click',cliqueMusique3);
+		titre4.addEventListener('click',cliqueMusique4);
+		titre5.addEventListener('click',cliqueMusique5);
+		titre6.addEventListener('click',cliqueMusique6);
+		titre7.addEventListener('click',cliqueMusique7);
+		titre8.addEventListener('click',cliqueMusique8);
+		titre9.addEventListener('click',cliqueMusique9);
+
+		
+		btnPrecedent.addEventListener('click',chansonPrecedente);
+		btnSuivant.addEventListener('click',chansonSuivante);
+		
+
+		
+
+		
+
+		
+		audio.addEventListener('ended',chansonSuivante);
+			
+			
+			function changeBackground(bUrl) {
+				document.body.style.backgroundImage = "url("+bUrl+")";
+			}
+			
+			
+			
+			function changeBackground2(bUrl) {
+				var video = document.createElement("video");
+				var div = document.getElementById("fondVideo");
+				
+				if (nb==0) {
+					let video = document.createElement("video");
+					video.autoplay='autoplay'
+					video.loop='infinite'
+					video.muted='muted'
+					video.src = bUrl;
+					div.appendChild(video);
+					nb=1;
+				}
+				else {
+					let video = div.querySelector('video');
+					video.remove();
+					video = document.createElement("video");
+					video.autoplay='autoplay'
+					video.loop='infinite'
+					video.muted='muted'
+					video.src = bUrl;
+					div.appendChild(video);
+				}
+
+
+			}
+			
+			let div = document.getElementById("gif");
+			let time=0;
+			let boucle=0
+			
+			let img=document.createElement("img");
+			function createImg1(){
+				img.src = 'logo1.png';
+				div.appendChild(img);
+
+			}
+			function createImg2(){
+				img.src = 'logo2.png';
+				div.appendChild(img);
+
+			}
+			function createImg3(){
+				img.src = 'logo3.png';
+				div.appendChild(img);
+
+			}
+
+
+			while (boucle !=1000){
+				setTimeout(createImg1,time);
+				time+=3500;
+				
+				setTimeout(createImg2, time);
+				time+=500;
+				
+				setTimeout(createImg3, time);
+				time+=500;
+				
+				setTimeout(createImg2, time);
+				time+=500;
+				
+				boucle++;
+			}
+
+	</script>
+	
+
+ </body>
+ </html>

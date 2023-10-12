@@ -1,0 +1,115 @@
+body{
+  background-color:black;
+  color: white;
+  font-family: machine;
+  font-size: 25px;
+  font-family: 'koolturademo';
+  background-image:url(vide.jpg);
+  background-repeat:no-repeat;
+  z-index:-100;
+}
+ button{
+	 margin: auto;
+	 border:0;
+	 background-color: transparent;
+	 color:#fff9e1;
+	 cursor:pointer;
+ }
+ li{
+	 cursor:pointer;
+ }
+ li:hover{
+  font-size: 25px;
+  color: black;
+  background: white;
+  cursor:pointer;
+}
+
+p:hover{
+	background: black;
+}
+ h1{
+	 text-align:center;
+	 font-size: 450%;
+ }
+ a{
+  color: white;
+  background-color: white;
+  text-decoration: none;
+  font-size: 25px;
+  text-align:center;
+  margin-top: 50vh;
+  transform: translateY(-50%);
+}
+
+
+.text{
+	float:left;
+	
+}
+ .bouton1{
+	width: 200px;
+	 font-size:100px;
+	 padding:10px;
+ }
+ .playlist{
+	 float:right;
+	 
+ }
+ .navigation{
+	 display:flex;
+	 align-content:center;
+	 justify-content:center;
+	 z-index:1;
+ }
+ .action-btn{
+	 border:0;
+	 font-size:30px;
+	 padding:10px;
+	 margin:0 30px;
+ }
+
+.barre{
+	border-left: 2px solid white;
+}
+.clear{
+  clear:both;
+}
+.centre{
+	text-align:center;
+}
+
+
+.bloc{
+	overflow:hidden;
+}
+
+.bloc video{
+	position:absolute;
+	min-height:100%;
+	min-width:100%;
+	top:50%;
+	left:50%;
+	z-index:-150;
+	transform:translate(-50%,-50%);
+
+}
+
+.logo{
+	overflow:hidden;
+	position:absolute;
+	top:50%;
+	left:50%;
+	z-index:-125;
+	transform:translate(-50%,-50%);
+	
+}
+
+@font-face {
+    font-family: 'koolturademo';
+    src: url('police/koolturademo-webfont.woff2') format('woff2'),
+         url('police/koolturademo-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
